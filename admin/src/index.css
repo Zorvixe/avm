@@ -1,0 +1,21 @@
+:root {
+  --primary: #2e7d32;
+  --secondary: #4caf50;
+  --background: #f5f7fa;
+  --white: #ffffff;
+  --border: #e5e7eb;
+  --text: #333;
+  --gray: #777;
+  --danger: #ef4444;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Poppins,sans-serif;
+  background:#edf2f7;
+}

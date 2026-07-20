@@ -1,0 +1,275 @@
+.customers-page {
+  min-height: 100vh;
+  padding: 35px;
+  background: #f5f7fb;
+}
+
+/* Header */
+
+.customers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.customers-header h1 {
+  font-size: 32px;
+  color: #1e293b;
+}
+
+/* Search */
+
+.search-box {
+  width: 320px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #dbe3ef;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.search-box svg {
+  color: #64748b;
+}
+
+/* Table */
+
+.customers-table {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .06);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #222;
+  color: #fff;
+}
+
+thead th {
+  padding: 18px;
+  text-align: left;
+  color: #fff;
+  font-size: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tbody td {
+  padding: 18px;
+  border-bottom: 1px solid #edf2f7;
+  color: #334155;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* Customer */
+
+.customer-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.customer-info img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.customer-info span {
+  font-weight: 600;
+}
+
+/* Status */
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.inactive {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Buttons */
+
+.customer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.customer-view-btn,
+.customer-delete-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.customer-view-btn {
+  background: #2563eb;
+  color: #fff;
+}
+
+.customer-view-btn:hover {
+  background: #1d4ed8;
+}
+
+.customer-delete-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+.customer-delete-btn:hover {
+  background: #dc2626;
+}
+/* Responsive */
+/* ===========================
+   Tablet (992px)
+=========================== */
+
+@media (max-width: 992px) {
+
+  .customers-page {
+    padding: 25px;
+  }
+
+  .customers-table {
+    overflow-x: auto;
+    border-radius: 15px;
+  }
+
+  table {
+    min-width: 900px;
+  }
+
+  thead th,
+  tbody td {
+    padding: 15px;
+  }
+}
+
+/* ===========================
+   Mobile (768px)
+=========================== */
+
+@media (max-width: 768px) {
+
+  .customers-page {
+    padding: 18px;
+  }
+
+  .customers-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .customers-header h1 {
+    font-size: 26px;
+    padding-left: 30px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    font-size: 14px;
+  }
+
+  .customer-info img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .customer-info span {
+    font-size: 14px;
+  }
+
+  thead th,
+  tbody td {
+    font-size: 13px;
+    padding: 14px;
+  }
+
+  .customer-view-btn,
+  .customer-delete-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* ===========================
+   Small Mobile (480px)
+=========================== */
+
+@media (max-width: 480px) {
+
+  .customers-page {
+    padding: 12px;
+  }
+
+  .customers-header h1 {
+    font-size: 22px;
+  }
+
+  .search-box {
+    padding: 10px 12px;
+  }
+
+  .search-box input {
+    font-size: 13px;
+  }
+
+  .customers-table {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 850px;
+  }
+
+  .customer-view-btn,
+  .customer-delete-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .customer-actions {
+    gap: 6px;
+  }
+}

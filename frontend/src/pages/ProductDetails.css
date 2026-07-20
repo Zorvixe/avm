@@ -1,0 +1,875 @@
+.detail-page{
+    width:100%;
+    padding:110px 7%;
+    background:#faf9f4;
+}
+
+.detail-wrapper{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:70px;
+    align-items:start;
+}
+
+.detail-left{
+    display:flex;
+    flex-direction:column;
+}
+
+.detail-image-box{
+    position:relative;
+}
+
+.detail-image{
+    width:100%;
+    height:600px;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+.detail-npk{
+    position:absolute;
+    right:770px;
+    bottom:15px;
+
+    background:#d9b233;
+    color:#0b503d;
+
+    padding:10px 20px;
+
+    border-radius:18px;
+
+    font-size:15px;
+    font-weight:700;
+
+    z-index:5;
+}
+.purchase-card{
+    border-radius:16px;
+    padding:24px;
+    margin-top: 10px;
+}
+
+.price-stock-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    padding-bottom:20px;
+}
+
+.price-box h4,
+.stock-box h4{
+    font-size:15px;
+    color:#777;
+    margin-bottom:18px;
+}
+
+.detail-price{
+    font-size:32px;
+    color:#1b5e20;
+    font-weight:700;
+}
+
+.delivery-info{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    padding:22px 0;
+    border-bottom:1px solid #ececec;
+}
+
+.delivery-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:15px;
+    color:#555;
+}
+
+.purchase-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-top:22px;
+}
+
+.cart-btn,
+.buy-btn{
+       width:100%;
+    height:56px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s ease;
+
+}
+
+
+.cart-btn{
+    background:#f4b400;
+    color:#fff;
+}
+
+
+.cart-btn:active:not(:disabled){
+    transform:scale(.98);
+}
+
+/* Disabled */
+.cart-btn:disabled{
+    background:#d7d7d7;
+    color:#888;
+    cursor:not-allowed;
+    box-shadow:none;
+    opacity:.7;
+    transform:none;
+}
+
+.buy-btn{
+    background:#1b5e20;
+    color:#fff;
+}
+.delivety-icons{
+    font-size: 20px;
+}
+.order-icons{
+    width: 20px;
+    height: 20px;
+}
+/*====================================
+ NEW PRODUCT INFO BOXES
+=====================================*/
+
+
+.detail-stock-box{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 22px;
+    gap:30px; 
+    background:#ffffff;
+    border:1px solid #e5e5e5;
+    border-radius:18px;
+}
+
+.stock-title{
+    font-size:15px;
+    color:#555;
+    font-weight:600;
+    
+}
+
+.stock{
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    
+}
+
+.in-stock{
+    background:#dff7e6;
+    color:#178542;
+}
+
+.low-stock{
+    background:#fff5d8;
+    color:#c78b00;
+    
+}
+
+.out-stock{
+    background:#ffe3e3;
+    color:#d22b2b;
+}
+
+
+
+.detail-category{
+    color:#0c8a4d;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.detail-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:62px;
+    font-weight:500;
+    line-height:.95;
+    color:#153f2d;
+    margin-bottom:28px;
+}
+
+.detail-description{
+    font-size:17px;
+    line-height:1.3;
+    color:#5d6668;
+    margin-bottom:45px;
+}
+
+.detail-block{
+    margin-bottom:30px;
+}
+
+.detail-block h4{
+    font-size:12px;
+    letter-spacing:2px;
+    color:#164d39;
+    margin-bottom:20px;
+}
+
+.detail-crops{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.detail-crops span{
+    background:#edf7ef;
+    color:#0b6a47;
+    padding:10px 20px;
+    border-radius:50px;
+    font-size:12px;
+    font-weight: bold;
+}
+
+.detail-benefits{
+    list-style:none;
+    padding:0;
+}
+
+.detail-benefits li{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+    font-size:14px;
+    color:#344346;
+}
+
+.detail-benefits li::before{
+    content:"✓";
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#eaf7ed;
+    color:#0b7c4d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+}
+
+.detail-composition{
+    margin-top:50px;
+    border:1px solid #e7e5dc;
+    border-radius:24px;
+    background:#fff;
+    padding:35px;
+}
+
+.detail-composition h4{
+    color:#164d39;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-bottom:25px;
+}
+
+.detail-composition table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.detail-composition table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detail-composition tbody tr {
+  transition: 0.3s;
+}
+
+.detail-composition tbody tr:nth-child(even) {
+  background: #f8fbf8;
+}
+
+.detail-composition tbody tr:hover {
+  background: #eef8f1;
+}
+
+.detail-composition td {
+  padding: 16px 20px;
+  border: 1px solid #e5e5e5;
+  font-size: 15px;
+}
+
+/* Label Columns */
+.detail-composition td:nth-child(1),
+.detail-composition td:nth-child(3) {
+  width: 30%;
+  font-weight: 600;
+  color: #234d20;
+  background: #f4faf5;
+}
+
+/* Value Columns */
+.detail-composition td:nth-child(2),
+.detail-composition td:nth-child(4) {
+  width: 20%;
+  font-weight: 500;
+  color: #444;
+  background: #fff;
+}
+
+/* Empty Cells */
+.detail-composition td:empty {
+  background: #fafafa;
+}
+.package-selection{
+    margin:25px 0;
+}
+
+.package-selection h4,
+.quantity-section h4{
+    margin-bottom:12px;
+    color:#4a3728;
+    font-size:20px;
+    font-weight:700;
+}
+
+.package-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.package-btn{
+    padding:14px 28px;
+    border:1px solid #d9d2c5;
+    background:#fff;
+    color:#4a3728;
+    font-weight:700;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.package-btn.active{
+    background:#1f8b4d;
+    color:#fff;
+    border-color:#1f8b4d;
+}
+
+.package-btn:hover{
+    background:#1f8b4d;
+    color:#fff;
+}
+
+.quantity-section{
+    margin-top:30px;
+}
+
+.quantity-box{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    border:1px solid #d9d2c5;
+}
+
+.quantity-box button{
+    width:55px;
+    height:55px;
+    background:#fff;
+    border:none;
+    font-size:34px;
+    cursor:pointer;
+    color:#1f8b4d;
+}
+
+.quantity-box span{
+    width:55px;
+    text-align:center;
+    font-size:24px;
+    font-weight:700;
+}
+
+
+.contact-buttons{
+    display:flex;
+    gap:18px;
+    margin-top:50px;
+    flex-wrap:wrap;
+    color: #fff;
+}
+.icon{
+    font-size: 26px;
+    font-weight: bold;
+}
+.whatsapp-button,
+.call-button{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    width:180px;
+    height:56px;
+
+    border-radius:20px;
+
+    text-decoration:none;
+
+    font-size:17px;
+    font-weight:600;
+
+    transition:.35s ease;
+
+}
+
+.whatsapp-button{
+    background:#25D366;
+}
+
+.whatsapp-button:hover{
+    background:#25D366;
+    transform:translateY(-3px);
+}
+
+/* Phone Button (Official Android/Google Green) */
+
+.call-button{
+    background:#0d6efd;
+}
+
+.call-button:hover{
+    background:#0d6efd;
+    transform:translateY(-3px);
+}
+
+
+.whatsapp-button svg,
+.call-button svg{
+
+    transition:transform .3s;
+
+}
+
+.whatsapp-button:hover svg,
+.call-button:hover svg{
+
+    transform:translateX(4px);
+
+}
+
+.related-products{
+    margin-top:80px;
+}
+
+.related-products h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:52px;
+    font-weight: 500;
+    color:#153f2d;
+    margin-bottom:40px;
+}
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.related-card{
+    text-decoration:none;
+    color:#1b3a2f;
+    border-radius:24px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.related-card:hover{
+    transform:translateY(-8px);
+}
+
+.related-image{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.related-content{
+    padding:22px;
+}
+
+.related-badge{
+    color:#1f8b4d;
+    font-size:14px;
+    font-weight:600;
+}
+
+.related-npk{
+    font-size:10px;
+    color:#1f8b4d;
+    font-weight: bold;
+    letter-spacing:1px;
+    margin-bottom: 15px;
+    
+}
+
+.related-content h3{
+    font-size:24px;
+    font-weight:500;
+    font-family:"Cormorant Garamond",serif;
+}
+/* ============================= */
+/* Related Products Responsive   */
+/* ============================= */
+/* ==========================================
+   RESPONSIVE - PRODUCT DETAILS
+========================================== */
+
+/* Laptop */
+@media (max-width:1200px){
+
+.detail-page{
+    padding:90px 5%;
+}
+
+.detail-wrapper{
+    grid-template-columns:1fr;
+    gap:45px;
+}
+
+.detail-left,
+.detail-right{
+    width:100%;
+}
+
+.detail-image{
+    height:520px;
+}
+
+.detail-npk{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+}
+
+.purchase-card{
+    padding:20px 0;
+}
+
+.price-stock-row{
+    justify-content:space-between;
+}
+
+.related-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+
+/* ==============================
+        Tablet
+================================ */
+
+@media (max-width:992px){
+
+.detail-page{
+    padding:80px 20px;
+}
+
+.detail-wrapper{
+    grid-template-columns:1fr;
+    gap:40px;
+}
+
+.detail-title{
+    font-size:48px;
+    line-height:1.1;
+}
+
+.detail-description{
+    font-size:16px;
+}
+
+.detail-image{
+    height:450px;
+}
+
+.detail-composition{
+    overflow-x:auto;
+}
+
+.detail-composition table{
+    min-width:650px;
+}
+
+.related-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.purchase-buttons{
+    gap:15px;
+}
+.related-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.related-card{
+    width:100%;
+}
+
+.related-image{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+}
+
+
+/* ==============================
+        Mobile
+================================ */
+
+@media (max-width:768px){
+
+.detail-page{
+    padding:75px 15px;
+    
+}
+
+.detail-wrapper{
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+    padding-top: 30px;
+
+}
+
+.detail-image{
+    width:100%;
+    height:320px;
+    border-radius:18px;
+}
+
+.detail-npk{
+    right:15px;
+    bottom:15px;
+    padding:8px 14px;
+    font-size:13px;
+}
+
+.detail-title{
+    font-size:36px;
+    line-height:1.15;
+}
+
+.detail-description{
+    font-size:15px;
+    line-height:1.7;
+}
+
+
+.price-stock-row{
+    display:flex;
+    flex-direction:row;      /* Keep side by side */
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:15px;
+    padding: 20px;
+}
+
+.price-box{
+    flex:1;
+}
+
+.stock-box{
+    width:auto;
+    text-align:right;
+}
+
+.detail-price{
+    font-size:28px;
+}
+
+.stock{
+    padding:7px 16px;
+    font-size:12px;
+}
+.package-selection h4,
+.quantity-section h4{
+    font-size:18px;
+    padding: 20px;
+}
+
+.package-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.package-btn{
+    flex:1;
+    min-width:50px;
+    padding:12px;
+    font-size:15px;
+    padding-left: 30px;
+}
+
+.quantity-box{
+    width:100px;
+}
+
+.quantity-box button{
+    width:50px;
+    height:50px;
+    font-size:28px;
+}
+
+.quantity-box span{
+    width:70px;
+    font-size:22px;
+}
+
+.delivery-info{
+    gap:12px;
+}
+
+.purchase-buttons{
+    gap:12px;
+}
+
+.cart-btn,
+.buy-btn{
+    width:100%;
+}
+.detail-right{
+    padding-left: 20px;
+
+}
+.contact-buttons{
+    flex-direction:column;
+}
+
+.whatsapp-button,
+.call-button{
+    width:100%;
+}
+
+.detail-composition{
+    padding:18px;
+    overflow: hidden;
+}
+
+.detail-composition table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.detail-composition td{
+    padding:12px;
+    font-size:14px;
+}
+
+}
+
+
+/* ==============================
+      Small Mobile
+================================ */
+
+@media (max-width:480px){
+
+.detail-page{
+    padding:70px 12px;
+}
+
+.detail-title{
+    font-size:30px;
+}
+
+.detail-category{
+    font-size:10px;
+}
+
+.detail-description{
+    font-size:14px;
+}
+
+.detail-image{
+    height:260px;
+}
+
+.detail-price{
+    font-size:28px;
+}
+
+.package-btn{
+    width:100%;
+    min-width:100%;
+}
+.quantity-section{
+    padding-left: 20px;
+}
+.quantity-box{
+    width:150px;
+    
+}
+
+.quantity-box button{
+    width:45px;
+    height:45px;
+    font-size:26px;
+}
+
+.quantity-box span{
+    width:60px;
+    font-size:20px;
+}
+
+.delivery-item{
+    font-size:14px;
+    padding-left: 20px;
+}
+
+.cart-btn,
+.buy-btn{
+    height:52px;
+    font-size:15px;
+}
+
+.related-products{
+    margin-top:50px;
+}
+
+.related-products h2{
+    font-size:28px;
+}
+
+.related-image{
+    height:200px;
+}
+
+.related-content h3{
+    font-size:22px;
+}
+
+}

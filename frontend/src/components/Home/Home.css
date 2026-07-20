@@ -1,0 +1,484 @@
+
+.values-section{
+    position:relative;
+    padding:90px 7%;
+    z-index:2;
+    
+}
+
+.values-heading{
+    text-align:center;
+    font-size:58px;
+    font-weight:700;
+    color:#7dd34d;
+    margin-bottom:65px;
+    font-family:"Cormorant Garamond",serif;
+    letter-spacing:.5px;
+}
+
+.values-heading span{
+    font-family: "Cormorant Garamond", serif;
+    color:#064e3b;
+}
+
+/*========================================
+                GRID
+========================================*/
+
+.values-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+/*========================================
+                CARD
+========================================*/
+
+.value-card{
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:#fff;
+    height:142px;
+    padding-left:145px;
+    border-radius:28px 0 28px 0;
+    border-bottom:5px solid #7dd34d;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+    transition:.45s ease;
+    cursor:pointer;
+}
+
+.value-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+   background:#edfbe5;
+    opacity:0;
+    transition:.45s;
+}
+
+.value-card:hover::before{
+    opacity:1;
+}
+
+.value-card:hover{
+    transform:translateY(-8px);
+    border-bottom-color:#7dd34d;
+    box-shadow:0 20px 40px rgba(57,162,59,.18);
+}
+
+/*========================================
+            LEFT SHAPE
+========================================*/
+
+.left-shape{
+    position:absolute;
+    left:0;
+    top:0;
+    width:102px;
+    height:102px;
+    background:#064e3b;
+    border-radius:0 0 90px 0;
+    transition:.45s;
+}
+
+.left-shape::after{
+    content:"";
+    position:absolute;
+    right:-10px;
+    top:0;
+    width:14px;
+    height:100%;
+    background:rgba(255,255,255,.78);
+    border-radius:0 0 22px 22px;
+}
+
+.value-card:hover .left-shape{
+    background:#064e3b;
+}
+
+/*========================================
+            WHITE CIRCLE
+========================================*/
+
+.white-circle{
+    position:absolute;
+    left:24px;
+    top:50%;
+    transform:translateY(-50%);
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    background-color: #fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/*========================================
+            DOTTED RING
+========================================*/
+
+.ring{
+    position:absolute;
+    width:72px;
+    height:72px;
+    border:1.5px dashed #2f8b2e;
+    border-radius:50%;
+    transition:.4s;
+}
+
+/*========================================
+                ICON
+========================================*/
+
+.icon-circle{
+     width:56px;
+    height:56px;
+    border-radius:50%;
+    background:#2f8b2e;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    z-index:3;
+    transition:.4s;
+}
+
+.icon-circle svg{
+    width:28px;
+    height:28px;
+    stroke-width:2;
+}
+
+/*========================================
+                TEXT
+========================================*/
+
+.content{
+    transition:.35s;
+}
+
+.content h3{
+    font-size:21px;
+    line-height:1.15;
+    color:#083b43;
+    font-weight:400;
+}
+
+/*========================================
+            HOVER
+========================================*/
+
+@keyframes rotateRing{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.value-card:hover .ring{
+    animation:rotateRing 6s linear infinite;
+    border-color:#2f8b2e;
+    
+}
+
+.value-card:hover .icon-circle{
+    background:#222;
+}
+
+.value-card:hover .content{
+    transform:translateX(5px);
+}
+
+/*========================================
+            ACTIVE CARD
+========================================*/
+
+.value-card.active{
+    background:
+    radial-gradient(circle at left,
+    rgba(140,226,111,.28),
+    #fff 60%);
+}
+
+.value-card.active .left-shape{
+    background:#2f8b2e;
+}
+
+.value-card.active .ring{
+    border-color:#fff;
+}
+
+.value-card.active .icon-circle{
+    background:#000;
+}
+
+/*========================================
+            RESPONSIVE
+========================================*/
+
+@media(max-width:1200px){
+
+.values-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.values-grid{
+    grid-template-columns:1fr;
+}
+
+.value-card{
+    height:132px;
+    padding-left:128px;
+}
+
+.left-shape{
+    width:112px;
+    height:112px;
+}
+
+.white-circle{
+    width:66px;
+    height:66px;
+    left:20px;
+}
+
+.ring{
+    width:66px;
+    height:66px;
+}
+
+.icon-circle{
+    width:52px;
+    height:52px;
+}
+
+.icon-circle svg{
+    width:24px;
+    height:24px;
+}
+
+.content h3{
+    font-size:19px;
+}
+
+.values-heading{
+    font-size:42px;
+}
+
+}
+
+
+.faq-section {
+   max-width: 1100px;
+  margin: 120px auto 40px;
+  padding: 0 20px;
+}
+.faq-subtitle {
+  text-align: center;
+  color: #16a34a;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 72px;
+  line-height: 1.1;
+  margin-bottom: 70px;
+  color: #1d3a31;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+
+.faq-item {
+  background: #fff;
+  margin-bottom: 18px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  border: none;
+  background: #fff;
+  padding: 22px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #234d20;
+}
+
+.faq-icon{
+  transition: transform .45s ease;
+  font-size: 24px;
+}
+
+.faq-item.active .faq-icon{
+  transform: rotate(180deg);
+}
+
+/* ---------- Smooth Open Close ---------- */
+
+.faq-answer{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .6s ease;
+}
+
+.faq-answer.open{
+  grid-template-rows:1fr;
+}
+
+.faq-answer-content{
+  overflow:hidden;
+  padding:0 25px;
+
+  color:#666;
+  line-height:1.8;
+  font-size:16px;
+
+  opacity:0;
+  transform:translateY(-10px);
+
+  transition:
+    opacity .45s ease,
+    transform .45s ease,
+    padding .45s ease;
+}
+
+.faq-answer.open .faq-answer-content{
+  padding:0 25px 24px;
+  opacity:1;
+  transform:translateY(0);
+}
+/* =======================================
+   FARMER VOICES
+======================================= */
+
+.farmer-voices-section{
+    padding:120px 7%;
+    background:#f8f0d7;
+    overflow:hidden;
+}
+
+.farmer-voices-heading{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.farmer-voices-heading span{
+    display:inline-block;
+    color:#16a34a;
+    letter-spacing:2px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.farmer-voices-heading h2{
+    font-size:50px;
+    font-family:"Playfair Display", serif;
+    color:#222;
+    font-weight:200;
+}
+
+/* ======================================= */
+
+
+
+.farmer-voices-slider{
+    display:flex;
+    gap:35px;
+    width:max-content;
+    animation:voiceScroll 28s linear infinite;
+}
+
+.farmer-voices-slider:hover{
+    animation-play-state:paused;
+}
+
+@keyframes voiceScroll{
+
+from{
+transform:translateX(0);
+}
+
+to{
+transform:translateX(-50%);
+}
+
+}
+
+/* ======================================= */
+
+.farmer-review-box{
+
+    position:relative;
+
+    width:390px;
+
+    padding:40px;
+
+    background:white;
+
+    border-radius:26px;
+
+    border-top:6px solid #16a34a ;
+    border-bottom:6px solid #16a34a ;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+    flex-shrink:0;
+}
+
+.farmer-review-box:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 25px 55px rgba(6,78,59,.18);
+
+}
+
+/* ======================================= */
+
+.quote-mark{
+
+    position:absolute;
+
+    top:20px;
+
+    right:25px;
+
+    font-size:90px;
+
+    color:#16a34a ;
+
+   
+
+    font-family:serif;
+
+    line-height:1;
+}
+

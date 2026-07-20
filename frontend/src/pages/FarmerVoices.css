@@ -1,0 +1,376 @@
+/* ===========================================
+   FARMER VOICES
+=========================================== */
+
+.farmerVoiceSection {
+  padding: 120px 8%;
+   background:#f8f0d7;
+  overflow: hidden;
+}
+
+.farmerVoiceHeading {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.voiceLabel {
+  display: inline-block;
+  color: #16944b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-bottom: 18px;
+}
+
+.farmerVoiceHeading h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 72px;
+  color: #20392f;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.farmerVoiceHeading h2 span {
+  color: #0b6d4a;
+  font-style: italic;
+}
+
+/* ===========================================
+   LAYOUT
+=========================================== */
+
+.farmerVoiceWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* ===========================================
+   IMAGE
+=========================================== */
+
+.farmerImageArea {
+  position: relative;
+  width: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.farmerGlow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+      circle,
+      rgba(212, 175, 55, .28),
+      transparent 72%
+  );
+  filter: blur(35px);
+  animation: glowMove 6s ease-in-out infinite;
+}
+
+@keyframes glowMove {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+.farmerPhoto {
+
+  width: 290px;
+  height: 290px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 7px solid white;
+
+  position: relative;
+  z-index: 5;
+
+  box-shadow:
+  0 25px 60px rgba(0,0,0,.18);
+
+  transition: .4s;
+
+}
+
+.farmerPhoto:hover{
+
+transform:scale(1.03);
+
+}
+
+/* ===========================================
+   CONTENT
+=========================================== */
+
+.farmerContent{
+
+flex:1;
+max-width:700px;
+
+}
+
+.quoteIcon{
+
+color:#d4af37;
+margin-bottom:30px;
+
+}
+
+.reviewText{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:24px;
+
+line-height:1.4;
+
+color:#34443d;
+
+font-weight:400;
+
+margin-bottom:45px;
+
+animation:fadeText .5s;
+
+}
+
+@keyframes fadeText{
+
+from{
+
+opacity:0;
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* ===========================================
+   AUTHOR
+=========================================== */
+
+.reviewAuthor h3{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:24px;
+
+color:#0b6042;
+
+font-weight:500;
+
+margin-bottom:8px;
+
+}
+
+.reviewAuthor p{
+
+font-size:12px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#8b928d;
+
+}
+
+/* ===========================================
+   CONTROLS
+=========================================== */
+
+.testimonialNavigation{
+
+display:flex;
+
+align-items:center;
+
+gap:30px;
+
+margin-top:50px;
+
+}
+
+.testimonialNavigation button{
+
+width:48px;
+height:48px;
+
+border:none;
+
+border-radius:50%;
+
+background:#fff;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+
+color:#0b6042;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.35s;
+
+}
+
+.testimonialNavigation button:hover{
+
+background:#0b6042;
+
+color:white;
+
+transform:translateY(-3px);
+
+}
+
+/* ===========================================
+   DOTS
+=========================================== */
+
+.testimonialDots{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.voiceDot{
+
+width:12px;
+height:12px;
+
+border-radius:50%;
+
+background:#d6ddd8;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.activeDot{
+
+width:42px;
+
+border-radius:20px;
+
+background:#0b6042;
+
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media(max-width:1100px){
+
+.farmerVoiceWrapper{
+
+flex-direction:column;
+
+text-align:center;
+
+gap:60px;
+
+}
+
+.reviewText{
+
+font-size:42px;
+
+}
+
+.reviewAuthor{
+
+text-align:center;
+
+}
+
+.testimonialNavigation{
+
+justify-content:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.farmerVoiceSection{
+
+padding:80px 20px;
+
+}
+
+.farmerVoiceHeading h2{
+
+font-size:46px;
+
+}
+
+.farmerImageArea{
+
+width:100%;
+
+}
+
+.farmerGlow{
+
+width:320px;
+height:320px;
+
+}
+
+.farmerPhoto{
+
+width:240px;
+height:240px;
+
+}
+
+.reviewText{
+
+font-size:30px;
+
+line-height:1.35;
+
+}
+
+.reviewAuthor h3{
+
+font-size:26px;
+
+}
+
+}

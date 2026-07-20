@@ -1,0 +1,273 @@
+.profile-page{
+    padding:120px 7%;
+    background:#f5f7fa;
+    min-height:100vh;
+}
+
+.profile-wrapper{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:35px;
+    align-items:start;
+}
+
+.profile-card{
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    position:sticky;
+    top:120px;
+}
+
+.profile-top{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.profile-avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#0f766e;
+    color:#fff;
+    font-size:42px;
+    font-weight:bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+}
+
+.profile-top h2{
+    margin-top:18px;
+    color:#123524;
+}
+
+.profile-top p{
+    color:#64748b;
+}
+
+.profile-form{
+    display:grid;
+    gap:16px;
+}
+
+.profile-form input,
+.profile-form textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #d9d9d9;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+}
+
+.profile-form textarea{
+    resize:none;
+}
+
+.profile-form button{
+    height:50px;
+    border:none;
+    border-radius:10px;
+    background:#14532d;
+    color:#fff;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+.profile-orders{
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.profile-orders h2{
+    margin-bottom:25px;
+    color:#143d2d;
+}
+
+.profile-order-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:20px;
+    border:1px solid #eee;
+    border-radius:15px;
+    margin-bottom:20px;
+    transition:.3s;
+}
+
+.profile-order-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.profile-order-image img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid #ddd;
+    cursor:pointer;
+}
+
+.profile-order-info{
+    flex:1;
+}
+
+.profile-order-info h3{
+    color:#123524;
+    margin-bottom:8px;
+}
+
+.profile-order-info p{
+    color:#64748b;
+    margin:4px 0;
+    font-size:15px;
+}
+
+.status-badge{
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status-badge.pending{
+    background:#fff3cd;
+    color:#b45309;
+}
+
+.status-badge.processing{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.status-badge.delivered{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.status-badge.cancelled{
+    background:#fee2e2;
+    color:#dc2626;
+}
+.orders-section{
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.orders-section h2{
+    margin-bottom:25px;
+    color:#143d2d;
+}
+
+.order-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:20px;
+    border:1px solid #eee;
+    border-radius:15px;
+    margin-bottom:20px;
+    transition:.3s;
+}
+
+.order-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.order-card img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid #ddd;
+    cursor:pointer;
+}
+
+.order-details{
+    flex:1;
+}
+
+.order-details h3{
+    color:#123524;
+    margin-bottom:8px;
+}
+
+.order-details p{
+    color:#64748b;
+    margin:4px 0;
+    font-size:15px;
+}
+
+.order-right{
+    text-align:right;
+}
+
+.order-right h3{
+    color:#14532d;
+    margin-bottom:12px;
+}
+
+.status{
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status.pending{
+    background:#fff3cd;
+    color:#b45309;
+}
+
+.status.processing{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.status.delivered{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.status.cancelled{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.empty-orders{
+    text-align:center;
+    padding:80px;
+    color:#64748b;
+}
+
+@media(max-width:992px){
+
+.profile-wrapper{
+    grid-template-columns:1fr;
+}
+
+.profile-card{
+    position:static;
+}
+
+.order-card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.order-right{
+    text-align:center;
+}
+
+}

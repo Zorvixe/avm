@@ -1,0 +1,85 @@
+/* ==========================
+   STATS SECTION
+========================== */
+
+.stats-section{
+    width:100%;
+    background:#fdfcf8;
+    padding:90px 80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+}
+
+.stat-card{
+    flex:1;
+    text-align:center;
+    transition:0.4s ease;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+}
+
+.stat-card h2{
+  font-family: "Cinzel", serif;
+    font-size:52px;
+    font-weight:700;
+    color:#005a46;
+    line-height:1;
+    margin-bottom:10px;
+}
+
+.stat-card p{
+    font-family:"Inter", sans-serif;
+    font-size:9px;
+    font-weight:700;
+    color:#0b9b45;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width:992px){
+
+    .stats-section{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:60px;
+        padding:70px 40px;
+    }
+
+    .stat-card{
+        width:45%;
+    }
+
+    .stat-card h2{
+        font-size:58px;
+    }
+}
+
+@media (max-width:768px){
+
+    .stats-section{
+        flex-direction:column;
+        padding:60px 20px;
+        gap:50px;
+    }
+
+    .stat-card{
+        width:100%;
+    }
+
+    .stat-card h2{
+        font-size:50px;
+    }
+
+    .stat-card p{
+        font-size:12px;
+        letter-spacing:3px;
+    }
+}
