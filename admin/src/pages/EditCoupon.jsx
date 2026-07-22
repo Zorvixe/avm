@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./EditCoupon.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
 
 function EditCoupon() {
   const navigate = useNavigate();

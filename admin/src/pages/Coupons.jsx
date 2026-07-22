@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import "./Coupons.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
 
 function Coupons() {
   const [coupons, setCoupons] = useState([]);

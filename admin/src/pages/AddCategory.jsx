@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddCategory.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
 
 function AddCategory() {
   const navigate = useNavigate();

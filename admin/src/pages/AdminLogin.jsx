@@ -3,7 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./AdminLogin.css";
 
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
+
 function AdminLogin() {
+
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +15,7 @@ function AdminLogin() {
     email: "",
     password: "",
   });
-
+ 
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -29,7 +32,7 @@ function AdminLogin() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/auth/admin/login",
+        `${API_URL}/auth/admin/login`,
         {
           method: "POST",
           headers: {

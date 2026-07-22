@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import "./Orders.css";
 
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
+
 function OrdersPage() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
@@ -22,7 +24,7 @@ useEffect(() => {
   const fetchOrders = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/orders/get"
+        `${API_URL}/orders/get`
       );
 
       const data = await response.json();

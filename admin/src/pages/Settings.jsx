@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BadgeIndianRupee, Building2, KeyRound, Mail, MapPin, Phone, Save, Truck } from "lucide-react";
 import "./Setting.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
 
 function Settings() {
   const token = localStorage.getItem("token");

@@ -28,6 +28,9 @@ const initialProduct = {
   sulphur: "",
   zinc: "",
 };
+
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
+
 function AddProduct() {
   const [product, setProduct] = useState(initialProduct);
   const [adding, setAdding] = useState(false);
@@ -48,7 +51,7 @@ useEffect(() => {
 const fetchCategories = async () => {
   try {
     const response = await fetch(
-      "http://localhost:5000/categories/get"
+      `${API_URL}/categories/get`
     );
 
     const data = await response.json();

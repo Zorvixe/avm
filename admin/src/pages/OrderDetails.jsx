@@ -3,7 +3,7 @@ import { ArrowLeft, Edit3, FileText, PackageCheck, ReceiptText, RefreshCw, Save,
 import { useNavigate, useParams } from "react-router-dom";
 import "./OrderDetails.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
 
 function OrderDetails() {
   const { id } = useParams();

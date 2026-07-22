@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import "./Categories.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
 
 function Categories() {
   const [categories, setCategories] = useState([]);

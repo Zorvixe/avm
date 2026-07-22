@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
+
 function AdminRegister() {
 
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ function AdminRegister() {
     }
 
     const response = await fetch(
-      "http://localhost:5000/auth/admin/register",
+      `{API_URL}/auth/admin/register`,
       {
         method: "POST",
         headers: {

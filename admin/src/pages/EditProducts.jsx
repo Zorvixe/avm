@@ -30,6 +30,8 @@ const initialProduct = {
   zinc: "",
 };
 
+const API_URL=process.env.BACKEND_API_URL || "http://localhost:5000"
+
 function EditProducts() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -50,7 +52,7 @@ useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/products/get/${id}`
+          `${API_URL}/products/get/${id}`
         );
 
         const data = await response.json();
