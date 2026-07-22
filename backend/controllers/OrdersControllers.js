@@ -40,47 +40,41 @@ export const createOrder = async (req, res) => {
  
   const [order] = await sql`
 INSERT INTO orders (
-
-customer_name,
-customer_email,
-customer_phone,
-address,
-city,
-state,
-pincode,
-total_amount,
-payment_method,
-payment_status,
-order_status,
-house_no,
-street_area,
-landmark,
-discount,
-coupon_id
-
+  customer_name,
+  customer_email,
+  customer_phone,
+  address,
+  city,
+  state,
+  pincode,
+  total_amount,
+  payment_method,
+  payment_status,
+  order_status,
+  house_no,
+  street_area,
+  landmark,
+  discount,
+  coupon_id
 )
-
 VALUES (
-
-${customer_name},
-${customer_email},
-${customer_phone},
-${address},
-${city},
-${state},
-${pincode},
-${total_amount},
-${payment_method || "Cash on Delivery"},
-${payment_method === "Razorpay" ? "Completed" : "Pending"},
-${"Placed"},
-${house_no || ""},
-${street_area || ""},
-${landmark || ""},
-${Number(discount) || 0},
-${coupon_id}
-
+  ${customer_name},
+  ${customer_email || null},
+  ${customer_phone},
+  ${address},
+  ${city},
+  ${state},
+  ${pincode},
+  ${total_amount},
+  ${payment_method || "Cash on Delivery"},
+  ${payment_method === "Razorpay" ? "Completed" : "Pending"},
+  ${"Placed"},
+  ${house_no || ""},
+  ${street_area || ""},
+  ${landmark || ""},
+  ${Number(discount) || 0},
+  ${coupon_id}
 )
-
 RETURNING *;
 `;
    for (const item of items) {

@@ -3,28 +3,53 @@ import { sql } from "../config/db.js";
 export const createOrdersTable = async () => {
   // Base orders table
   await sql`
-    CREATE TABLE IF NOT EXISTS orders (
-      id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS orders (
+    id SERIAL PRIMARY KEY,
 
-      customer_name VARCHAR(255) NOT NULL,
-      customer_email VARCHAR(255),
-      customer_phone VARCHAR(20) NOT NULL,
+    customer_name VARCHAR(255) NOT NULL,
+    customer_email VARCHAR(255),
+    customer_phone VARCHAR(20) NOT NULL,
 
-      address TEXT NOT NULL,
-      city VARCHAR(100),
-      state VARCHAR(100),
-      pincode VARCHAR(20),
+    address TEXT NOT NULL,
+    city VARCHAR(100),
+    state VARCHAR(100),
+    pincode VARCHAR(20),
 
-      total_amount NUMERIC(10,2) NOT NULL,
+    house_no VARCHAR(255),
+    street_area VARCHAR(255),
+    landmark VARCHAR(255),
+    country VARCHAR(50) DEFAULT 'India',
 
-      payment_method VARCHAR(50) DEFAULT 'Cash on Delivery',
-      payment_status VARCHAR(50) DEFAULT 'Pending',
-      order_status VARCHAR(50) DEFAULT 'Placed',
+    total_amount NUMERIC(10,2) NOT NULL,
 
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-  `;
+    discount NUMERIC(10,2) DEFAULT 0,
+    coupon_id INTEGER,
+
+    payment_method VARCHAR(50) DEFAULT 'Cash on Delivery',
+    payment_status VARCHAR(50) DEFAULT 'Pending',
+    order_status VARCHAR(50) DEFAULT 'Placed',
+
+    razorpay_order_id VARCHAR(255),
+    razorpay_payment_id VARCHAR(255),
+
+    shiprocket_order_id VARCHAR(100),
+    shiprocket_shipment_id VARCHAR(100),
+    awb_code VARCHAR(100),
+
+    pickup_address_line1 TEXT,
+    pickup_address_line2 TEXT,
+    pickup_city VARCHAR(100),
+    pickup_state VARCHAR(100),
+    pickup_pincode VARCHAR(10),
+    pickup_location_name VARCHAR(255),
+    pickup_schedule_date VARCHAR(50),
+    pickup_schedule_time VARCHAR(100),
+    pickup_schedule_display VARCHAR(255),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+`;
 
   // Add all extended columns (safe: IF NOT EXISTS equivalent via ALTER)
   const alterStatements = [

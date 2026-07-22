@@ -14,7 +14,8 @@ const getRazorpayInstance = async () => {
   if (!keyId || !keySecret) {
     throw new Error("Razorpay credentials not configured. Please update Settings.");
   }
-
+console.log("Key ID:", keyId);
+console.log("Secret exists:", !!keySecret);
   return new Razorpay({ key_id: keyId, key_secret: keySecret });
 };
 

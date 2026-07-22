@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, Moon, Search, Sun, X, Leaf } from "lucide-react";
 import "./Navbar.css";
-import { User, LogOut, Package, ShoppingCart } from "lucide-react";
+import {
+  User,
+  LogOut,
+  Package,
+  ShoppingCart,
+  TicketPercent,
+} from "lucide-react";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -153,6 +159,18 @@ useEffect(() => {
           <Package size={16} />
           My Orders
         </Link>
+         
+         <Link
+  to="/my-coupons"
+  onClick={() => {
+    setProfileOpen(false);
+    setOpen(false);
+  }}
+>
+  <TicketPercent size={16} />
+  My Coupons
+</Link>
+        
 
         <button
           onClick={() => {

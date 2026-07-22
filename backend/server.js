@@ -11,6 +11,9 @@ import RazorpayRoutes from "./routes/RazorpayRoutes.js";
 import SettingsRoutes from "./routes/SettingsRoutes.js";
 import ShiprocketRoutes from "./routes/ShiprocketRoutes.js";
 import { razorpayWebhook } from "./controllers/RazorpayControllers.js";
+import couponRoutes from "./routes/CouponRoutes.js";
+import categoryRoutes from "./routes/CategoryRoutes.js";
+
 dotenv.config()
 
 const PORT = process.env.PORT || 5000
@@ -45,6 +48,8 @@ app.use("/orders", OrderRoutes);
 app.use("/razorpay", RazorpayRoutes);
 app.use("/settings", SettingsRoutes);
 app.use("/shiprocket", ShiprocketRoutes);
+app.use("/coupons", couponRoutes);
+app.use("/categories", categoryRoutes);
 
 app.get("/", (req, res) => res.send("AVM API is running 🚀"));
 
@@ -53,7 +58,7 @@ const startServer = async () => {
     await initDatabase();
 
     server.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
     console.log(error);

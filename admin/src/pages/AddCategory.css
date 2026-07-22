@@ -1,0 +1,145 @@
+.add-category-page {
+  min-height: 100vh;
+  padding: 35px;
+  background: #f5f7fb;
+}
+
+.add-category-header {
+  margin-bottom: 30px;
+}
+
+.add-category-header h1 {
+  font-size: 32px;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.add-category-header p {
+  color: #64748b;
+}
+
+.add-category-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 35px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, .08);
+}
+
+.add-category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.form-group input {
+  height: 48px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  padding: 0 15px;
+  font-size: 15px;
+  outline: none;
+  transition: .3s;
+}
+
+.form-group input:focus {
+  border-color: #16a34a;
+}
+
+.form-group small {
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+}
+
+.checkbox-group input {
+  width: 18px;
+  height: 18px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.cancel-btn,
+.save-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.cancel-btn {
+  background: #e5e7eb;
+  color: #334155;
+}
+
+.cancel-btn:hover {
+  background: #d1d5db;
+}
+
+.save-btn {
+  background: #16a34a;
+  color: #fff;
+}
+
+.save-btn:hover {
+  background: #15803d;
+}
+
+.save-btn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+@media (max-width:768px) {
+
+  .add-category-page {
+    padding: 20px;
+  }
+
+  .add-category-card {
+    padding: 25px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .save-btn {
+    width: 100%;
+  }
+}

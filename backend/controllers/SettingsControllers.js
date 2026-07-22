@@ -37,25 +37,38 @@ export const updateSetting = async (req, res) => {
 
 export const updateSettingsBulk = async (req, res) => {
   try {
+    console.log("BODY:", req.body);
+
     const entries = Object.entries(req.body || {});
+    console.log(entries);
 
     for (const [key, value] of entries) {
+      console.log("Saving:", key, value);
+
       if (value === undefined || value === null) continue;
-      if ((key === "shiprocket_password" || key === "shiprocket_webhook_secret") && value === "********") {
-        continue;
-      }
 
       await sql`
         INSERT INTO settings (key, value, updated_at)
         VALUES (${key}, ${String(value)}, NOW())
-        ON CONFLICT (key) DO UPDATE SET value = ${String(value)}, updated_at = NOW()
+        ON CONFLICT (key)
+        DO UPDATE SET
+          value = ${String(value)},
+          updated_at = NOW()
       `;
     }
 
-    clearShiprocketCache();
-    res.json({ success: true, message: "Settings saved" });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.log("Saved successfully");
+
+    res.json({
+      success: true,
+      message: "Settings saved",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
 };
 

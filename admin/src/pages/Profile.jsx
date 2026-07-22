@@ -115,7 +115,7 @@ function Profile() {
 
             {!isEditing && (
               <button
-                className="edit-btn"
+                className="edit-profile"
                 onClick={() => setIsEditing(true)}
               >
                 <Pencil size={18} />

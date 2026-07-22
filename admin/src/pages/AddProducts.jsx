@@ -32,6 +32,7 @@ function AddProduct() {
   const [product, setProduct] = useState(initialProduct);
   const [adding, setAdding] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
 
 useEffect(() => {
   const timer = setTimeout(() => {
@@ -40,6 +41,28 @@ useEffect(() => {
 
   return () => clearTimeout(timer);
 }, []);
+useEffect(() => {
+  fetchCategories();
+}, []);
+
+const fetchCategories = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost:5000/categories/get"
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      // show only active categories
+      setCategories(
+        data.data.filter((cat) => cat.is_active)
+      );
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
   
 const addPackage = () => {
   setProduct((prev) => ({
@@ -157,17 +180,24 @@ const handlePackageChange = (index, field, value) => {
             <div className="input-group">
               <label>Category</label>
 
-              <select
+              <input
+                type="text"
                 name="category"
+                list="category-list"
                 value={product.category}
                 onChange={handleChange}
-              >
-                <option value="">Select</option>
-                <option value="FERTILIZER">FERTILIZER</option>
-                <option value="BIO">BIO</option>
-                <option value="MICRONUTRIENTS">MICRONUTRIENTS</option>
-                <option value="SPECIALITY">SPECIALITY</option>
-              </select>
+                placeholder="Select or type category"
+                required
+              />
+
+              <datalist id="category-list">
+                {categories.map((category) => (
+                  <option
+                    key={category.id}
+                    value={category.name}
+                  />
+                ))}
+              </datalist>
             </div>
 
             <div className="input-group">

@@ -2,7 +2,7 @@ import "./Checkout.css";
 import { useEffect, useState } from "react";
 import { useNavigate,  Link  } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle ,TicketPercent } from "lucide-react";
 
 function Checkout() {
   const navigate = useNavigate();
@@ -12,25 +12,61 @@ function Checkout() {
   const [cartItems, setCartItems] = useState([]);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [placedOrderId, setPlacedOrderId] = useState(null);
+  const [coupons, setCoupons] = useState([]);
+  const [selectedCoupon, setSelectedCoupon] = useState(null);
+  const [couponCode, setCouponCode] = useState("");
+  const [discount, setDiscount] = useState(0);
 
   const [formData, setFormData] = useState({
-    customer_name: "",
-    customer_phone: "",
-    customer_email: "",
-    city: "",
-    district: "",
-    state: "",
-    pincode: "",
-    address: "",
-    payment_method: "Cash on Delivery",
-    notes: "",
-  });
+ customer_name: "",
+  customer_phone: "",
+  customer_email: "",
 
- useEffect(() => {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  setCartItems(cart);
+  house_no: "",
+  street_area: "",
+  landmark: "",
+
+  city: "",
+  district: "",
+  state: "",
+  pincode: "",
+
+  payment_method: "Cash on Delivery",
+  notes: "",
+});
+
+useEffect(() => {
+  const buyNowItem = JSON.parse(localStorage.getItem("buyNowItem"));
+
+  if (buyNowItem) {
+    setCartItems([buyNowItem]);
+  } else {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(cart);
+  }
+
   setPageLoading(false);
 }, []);
+
+useEffect(() => {
+  fetchCoupons();
+}, []);
+
+const fetchCoupons = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost:5000/coupons/available"
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      setCoupons(data.data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
@@ -47,10 +83,7 @@ const loadRazorpayScript = () => {
   });
 };
 
-  useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartItems(cart);
-  }, []);
+ 
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + Number(item.price) * Number(item.quantity),
@@ -59,7 +92,7 @@ const loadRazorpayScript = () => {
 
   const deliveryCharge = subtotal > 0 ? 100 : 0;
 
-  const total = subtotal + deliveryCharge;
+  const total = subtotal + deliveryCharge - discount;
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -69,13 +102,56 @@ const loadRazorpayScript = () => {
   };
 
   const completeOrderSuccess = (orderId) => {
-    localStorage.setItem("customer_phone", formData.customer_phone);
-    localStorage.setItem("customer_name", formData.customer_name);
-    localStorage.removeItem("cart");
-    window.dispatchEvent(new Event("cartUpdated"));
-    setPlacedOrderId(orderId || null);
-    setOrderSuccess(true);
-  };
+  localStorage.setItem("customer_phone", formData.customer_phone);
+  localStorage.setItem("customer_name", formData.customer_name);
+
+  localStorage.removeItem("cart");
+  localStorage.removeItem("buyNowItem");
+
+  window.dispatchEvent(new Event("cartUpdated"));
+
+  setPlacedOrderId(orderId || null);
+  setOrderSuccess(true);
+};
+
+const applyCoupon = (coupon) => {
+  if (subtotal < Number(coupon.min_order)) {
+    alert(
+      `Minimum order should be ₹${coupon.min_order} to use this coupon.`
+    );
+    return;
+  }
+
+  let couponDiscount = 0;
+
+  if (coupon.discount_type === "percentage") {
+    couponDiscount =
+      (subtotal * Number(coupon.discount_value)) / 100;
+
+    if (
+      coupon.max_discount &&
+      couponDiscount > Number(coupon.max_discount)
+    ) {
+      couponDiscount = Number(coupon.max_discount);
+    }
+  } else {
+    couponDiscount = Number(coupon.discount_value);
+  }
+
+  setSelectedCoupon(coupon);
+  setCouponCode(coupon.code);
+  setDiscount(couponDiscount);
+
+  alert(`${coupon.code} Applied Successfully`);
+};
+
+const removeCoupon = () => {
+  setSelectedCoupon(null);
+  setCouponCode("");
+  setDiscount(0);
+
+  alert("Coupon Removed Successfully");
+};
 
   const placeCodOrder = async (orderData) => {
     const response = await fetch(
@@ -173,24 +249,46 @@ const loadRazorpayScript = () => {
   };
 
   const placeOrder = async () => {
-  if (
-    !formData.customer_name ||
-    !formData.customer_phone ||
-    !formData.address ||
-    !formData.city ||
-    !formData.state ||
-    !formData.pincode
-  ) {
-    alert("Please fill all required fields.");
-    return;
-  }
+if (
+  !formData.customer_name ||
+  !formData.customer_phone ||
+  !formData.house_no ||
+  !formData.street_area ||
+  !formData.city ||
+  !formData.district ||
+  !formData.state ||
+  !formData.pincode
+) {
+  alert("Please fill all required fields.");
+  return;
+}
 
-  const orderData = {
-    ...formData,
-    payment_status: formData.payment_method === "Razorpay" ? "Completed" : "Pending",
-    total_amount: total,
-    items: cartItems,
-  };
+
+  
+const fullAddress = [
+  formData.house_no,
+  formData.street_area,
+  formData.landmark,
+  formData.city,
+  formData.district,
+  formData.state,
+  formData.pincode,
+]
+.filter(Boolean)
+.join(", ");
+
+const orderData = {
+  ...formData,
+  address: fullAddress,
+  payment_status:
+    formData.payment_method === "Razorpay"
+      ? "Completed"
+      : "Pending",
+      coupon_code: couponCode,
+      discount: discount,
+  total_amount: total,
+  items: cartItems,
+};
 
   try {
     if (placingOrder) return;
@@ -284,13 +382,37 @@ if (orderSuccess) {
                 onChange={handleChange}
               />
 
-              <input
-                type="email"
-                name="customer_email"
-                placeholder="Email Address"
-                value={formData.customer_email}
-                onChange={handleChange}
-              />
+            <input
+              type="email"
+              name="customer_email"
+              placeholder="Email (Optional)"
+              value={formData.customer_email}
+              onChange={handleChange}
+            />
+                          <input
+              type="text"
+              name="house_no"
+              placeholder="House / Flat No."
+              value={formData.house_no}
+              onChange={handleChange}
+            />
+
+            <input
+              type="text"
+              name="street_area"
+              placeholder="Street / Area / Colony"
+              value={formData.street_area}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="landmark"
+              placeholder="Landmark (Optional)"
+              value={formData.landmark}
+              onChange={handleChange}
+            />
+
+
 
               <input
                 type="text"
@@ -323,13 +445,12 @@ if (orderSuccess) {
                 value={formData.pincode}
                 onChange={handleChange}
               />
-
               <textarea
-                rows="4"
-                name="address"
-                placeholder="Complete Address"
-                value={formData.address}
+                name="notes"
+                placeholder="Order Notes (Optional)"
+                value={formData.notes}
                 onChange={handleChange}
+                rows={3}
               />
 
             </div>
@@ -422,6 +543,71 @@ if (orderSuccess) {
 
             ))}
 
+          <div className="available-coupons">
+
+            <h3>
+              <TicketPercent size={18} />
+              Available Coupons
+            </h3>
+
+            {coupons.length === 0 ? (
+
+              <p>No coupons available.</p>
+
+            ) : (
+
+              coupons.map((coupon) => (
+
+                <div
+                  className="coupon-box"
+                  key={coupon.id}
+                >
+
+                  <div className="coupon-details">
+
+                    <h4>{coupon.code}</h4>
+
+                    <p>
+                      {coupon.discount_type === "percentage"
+                        ? `${coupon.discount_value}% OFF`
+                        : `₹${coupon.discount_value} OFF`}
+                    </p>
+
+                    <small>
+                      Minimum Order ₹{coupon.min_order}
+                    </small>
+
+                  </div>
+
+                  {selectedCoupon?.id === coupon.id ? (
+
+                    <button
+                      type="button"
+                      className="remove-coupon-btn"
+                      onClick={removeCoupon}
+                    >
+                      Remove
+                    </button>
+
+                  ) : (
+
+                    <button
+                      type="button"
+                      className="apply-coupon-btn"
+                      onClick={() => applyCoupon(coupon)}
+                    >
+                      Apply
+                    </button>
+
+                  )}
+
+                </div>
+
+              ))
+
+            )}
+
+          </div>
             <div className="price-row">
               <span>Subtotal</span>
               <span>₹{subtotal}</span>
@@ -431,11 +617,18 @@ if (orderSuccess) {
               <span>Delivery Charge</span>
               <span>₹{deliveryCharge}</span>
             </div>
+           <div className="price-row">
+  <span>Coupon Discount</span>
 
-            <div className="price-row total-row">
-              <span>Total</span>
-              <span>₹{total}</span>
-            </div>
+  <span style={{ color: "green" }}>
+    - ₹{discount}
+  </span>
+</div>
+
+<div className="price-row total-row">
+  <span>Total</span>
+  <span>₹{total}</span>
+</div>
 
            <button
   className="place-order-btn"

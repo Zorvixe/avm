@@ -11,11 +11,11 @@ function Settings() {
   const [message, setMessage] = useState("");
   const [pickupLocations, setPickupLocations] = useState([]);
   const [settings, setSettings] = useState({
-    company: "GreenGrow Fertilizers",
-    email: "admin@greengrow.com",
-    phone: "+91 9876543210",
-    address: "Hyderabad, Telangana",
-    gst: "36ABCDE1234F1Z5",
+    company: "",
+    email: "",
+    phone: "+91 ",
+    address: "",
+    gst: "",
     razorpay_key_id: "",
     razorpay_key_secret: "",
     shiprocket_email: "",
@@ -38,6 +38,7 @@ function Settings() {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
+        console.log("Settings from API:", data);
 
         if (data.success) {
           setSettings((prev) => ({ ...prev, ...data.settings }));

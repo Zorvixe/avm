@@ -91,7 +91,23 @@ const handleAddToCart = () => {
   window.dispatchEvent(new Event("cartUpdated"));
   navigate("/cart");
 };
+const handleBuyNow = () => {
+  if (!selectedPackage) {
+    alert("Please select a package.");
+    return;
+  }
 
+  const buyNowItem = {
+    ...product,
+    size: selectedPackage.size,
+    price: selectedPackage.price,
+    quantity,
+  };
+
+  localStorage.setItem("buyNowItem", JSON.stringify(buyNowItem));
+
+  navigate("/checkout");
+};
   return (
     <section className="detail-page">
       <div className="detail-wrapper">
@@ -221,12 +237,13 @@ const handleAddToCart = () => {
   Add to Cart
 </button>
 
-    <button
-      className="buy-btn"
-      disabled={product.stock === "Out of Stock"}
-    >
-      Buy Now
-    </button>
+   <button
+  className="buy-btn"
+  onClick={handleBuyNow}
+  disabled={product.stock === "Out of Stock"}
+>
+  Buy Now
+</button>
 
   </div>
 

@@ -11,6 +11,8 @@ import {
   UserCircle,
   LogOut,
   Leaf,
+   ChartColumnStacked,
+  TicketPercent,
   X,
 } from "lucide-react";
 import "./Sidebar.css";
@@ -22,8 +24,11 @@ const menu = [
   { path: "/addproducts", title: "Add Products", icon: Package },
   { path: "/orders", title: "Orders", icon: ShoppingCart },
   { path: "/customers", title: "Customers", icon: Users },
+  { path: "/coupons", title: "Coupons", icon: TicketPercent },
+  { path: "/categories", title: "Categories", icon:  ChartColumnStacked},
   { path: "/settings", title: "Settings", icon: Settings },
   { path: "/profile", title: "Profile", icon: UserCircle },
+  
 ];
 
 function Sidebar({ collapsed, mobileOpen, closeSidebar }) {
@@ -37,7 +42,7 @@ function Sidebar({ collapsed, mobileOpen, closeSidebar }) {
 
   console.log("Token after logout:", localStorage.getItem("token"));
 
-navigate("/login");
+navigate("/admin/login");
 };
 
   return (

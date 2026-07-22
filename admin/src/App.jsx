@@ -12,6 +12,12 @@ import Customers from "./pages/Customers";
 import CustomerDetails from "./pages/CustomerDetails";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import Coupons from "./pages/Coupons";
+import AddCoupon from "./pages/AddCoupon";
+import EditCoupon from "./pages/EditCoupon";
+import Categories from "./pages/Categories";
+import AddCategory from "./pages/AddCategory";
+import EditCategory from "./pages/EditCategory";
 
 import AdminLogin from "./pages/AdminLogin";
 import AdminRegister from "./pages/AdminRegister";
@@ -45,6 +51,14 @@ export default function App() {
 
           <Route path="/customers" element={<Customers />} />
           <Route path="/customers/:id" element={<CustomerDetails />} />
+
+          <Route path="/coupons" element={<Coupons/>} />
+          <Route path="/coupons/add" element={<AddCoupon />} />
+          <Route path="/coupons/edit/:id" element={<EditCoupon />} />
+
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/add" element={<AddCategory />} />
+          <Route path="/categories/edit/:id" element={<EditCategory />} />
 
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />

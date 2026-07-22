@@ -101,22 +101,22 @@
    Edit Button
 ========================= */
 
-.edit-btn {
+.edit-profile {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 22px;
+  padding: 12px 22px !important;
   border: none;
   border-radius: 10px;
   background: #2563eb;
   color: #fff;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 600 !important;
   cursor: pointer;
   transition: .3s;
 }
 
-.edit-btn:hover {
+.edit-profile:hover {
   background: #1d4ed8;
 }
 

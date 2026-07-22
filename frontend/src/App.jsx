@@ -13,7 +13,8 @@ import Register from './pages/Register'
 import ForgotPassword from "./pages/ForgotPassword";
 import Checkout from "./pages/Checkout";
 import Profile from './pages/Profile';
-import MyOrders from './pages/MyOrders'
+import MyOrders from './pages/MyOrders';
+import MyCoupons from "./pages/MyCoupons";
 function App() {
   return (
     <BrowserRouter>
@@ -35,6 +36,7 @@ function App() {
       />
       <Route path = "/profile" element={<Profile/>}/>
       <Route path = "/myorders" element={<MyOrders/>}/>
+      <Route path="/my-coupons" element={<MyCoupons />} />
 
 
     </Route>

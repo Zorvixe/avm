@@ -3,6 +3,58 @@
   max-width: 1300px;
   margin: 60px auto;
 }
+.available-coupons{
+    margin:25px 0;
+}
+
+.available-coupons h3{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.coupon-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:12px;
+    background:#fafafa;
+}
+
+.coupon-box h4{
+    margin:0;
+    font-size:17px;
+    font-weight:700;
+}
+
+.coupon-box p{
+    margin:5px 0;
+    color:#16a34a;
+    font-weight:600;
+}
+
+.coupon-box small{
+    color:#666;
+}
+
+.coupon-box button{
+    background:#16a34a;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.coupon-box button:hover{
+    background:#15803d;
+}
 
 .checkout-heading {
   font-size: 36px;
